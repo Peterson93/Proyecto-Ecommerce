@@ -7,25 +7,23 @@ import Loader from '../Loader';
 import Message from '../Message'
 
 
-
-
 function InicioScreen() {
   const dispatch=useDispatch()
   const productosList=useSelector((state)=>state.productosList);
   const {error,loading,productos}=productosList
 
-  // const[productos,setproductos]=useState([])
+  /* const[productos,setproductos]=useState([]) */
 
    useEffect (()=>{
     dispatch(listProducts())
-  // async function traerproductos() {
-  // const {data}= await axios.get('/api/products/')
-  // setproductos(data)
+  /* async function traerproductos() {
+   const {data}= await axios.get('/api/products/')
+   setproductos(data)
       
-  //  }
-  //  traerproductos()
+    }
+    traerproductos() */
   },[dispatch]);
-  //console.log(productos)
+  /*console.log(productos)*/
 
   return (
     <Container>

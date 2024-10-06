@@ -45,7 +45,7 @@ function Header() {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    Usuario Nuevo
+                    Cuenta de Usuario 
                   </Nav.Link>
                 </LinkContainer>
                 <div className="dropdown-menu">
