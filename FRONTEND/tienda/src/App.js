@@ -34,7 +34,7 @@ export default function App() {
           <Route exact path="/Logout" element={<LogoutScreen/>}></Route>
         </Routes>
         <Routes>
-          <Route exact path="/Carrito" element={<CarritoScreen/>}></Route>
+          <Route exact path="/Carrito/:id?" element={<CarritoScreen/>}></Route>
         </Routes>
     </Router>
     </>

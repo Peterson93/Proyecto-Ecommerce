@@ -1,12 +1,22 @@
 import React from "react";
 
 import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Row, Col } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../acciones/accionesUsuario";
 
 function Header() {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+
   return (
     <>
-      <Navbar className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <Navbar className="navbar navbar-expand-lg bg-black" data-bs-theme="dark">
         <div className="container-fluid">
           <LinkContainer to="/">
             <Nav.Link className="navbar-brand">OferClick</Nav.Link>
@@ -26,7 +36,9 @@ function Header() {
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
                 <LinkContainer to="/">
-                  <Nav.Link className="navbar-link active">Inicio <i className="fa-solid fa-shop"></i></Nav.Link>
+                  <Nav.Link className="navbar-link active">
+                    Inicio <i className="fa-solid fa-shop"></i>
+                  </Nav.Link>
                 </LinkContainer>
               </li>
 
@@ -36,38 +48,54 @@ function Header() {
                 </LinkContainer>
               </li>
 
-              <li className="nav-item dropdown">
-                <LinkContainer to="/signup">
-                  <Nav.Link
-                    className="nav-link dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                    role="button"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Cuenta de Usuario 
-                  </Nav.Link>
-                </LinkContainer>
-                <div className="dropdown-menu">
-                  <LinkContainer to="/Login">
-                    <Nav.Link className="dropdown-item" href="#">
-                      Ingresar
+              {userInfo ? (
+                <li className="nav-item dropdown">
+                  <LinkContainer to="/signup">
+                    <Nav.Link
+                      className="nav-link dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Bienvenido {userInfo.name}
                     </Nav.Link>
                   </LinkContainer>
+                  <div className="dropdown-menu">
+                    <Nav.Link className="dropdown-item" onClick={logoutHandler}>
+                      Salir
+                    </Nav.Link>
+                  </div>
+                </li>
+              ) : (
+                <li className="nav-item dropdown">
                   <LinkContainer to="/Signup">
-                    <Nav.Link className="dropdown-item" href="#">
-                      Registrarse
+                    <Nav.Link
+                      className="nav-link dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Usuario Nuevo?
                     </Nav.Link>
                   </LinkContainer>
 
-                  <div className="dropdown-divider">algo mas</div>
-                  <LinkContainer to="/Logout">
-                  <Nav.Link className="dropdown-item" href="#">
-                    Salir
-                  </Nav.Link>
-                  </LinkContainer>
-                </div>
-              </li>
+                  <div className="dropdown-menu">
+                    <LinkContainer to="/Login">
+                      <Nav.Link className="dropdown-item" href="#">
+                        Ingresar
+                      </Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/Signup">
+                      <Nav.Link className="dropdown-item" href="#">
+                        Registrarse
+                      </Nav.Link>
+                    </LinkContainer>
+                    
+                  </div>
+                </li>
+              )}
             </ul>
             <form className="d-flex">
               <input
@@ -82,6 +110,7 @@ function Header() {
           </div>
         </div>
       </Navbar>
+      <marquee behavior=""direccion="">SITIO WEB CREADO POR - PETERSON DE LA ROSA</marquee>
     </>
   );
 }

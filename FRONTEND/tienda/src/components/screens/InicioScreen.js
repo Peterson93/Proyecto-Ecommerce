@@ -27,11 +27,7 @@ function InicioScreen() {
 
   return (
     <Container>
-      <div>SITIO WEB CREADO POR - PETERSON DE LA ROSA</div>
-
       <br />
-      
-
       {
         loading?(
           <Loader/>

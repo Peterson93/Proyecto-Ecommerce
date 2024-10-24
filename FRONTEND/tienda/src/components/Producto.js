@@ -5,9 +5,10 @@ import Rating from "./Rating";
 
 function Producto({ producto }) {
   return (
-    <Card className="my-3 p3 rounded">      
+    <Card className="my-3 p2 rounded" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>      
       <Link to={`/product/${producto._id}`}>
-        <Card.Img src={producto.imagen} style={{height:140, width:160,}}/>
+      <p/>
+        <Card.Img src={producto.imagen}  style={{height:140, width:160}}  />
       </Link>
       <Card.Body>
         <Link to={`/product/${producto._id}`} className="text-dark">
