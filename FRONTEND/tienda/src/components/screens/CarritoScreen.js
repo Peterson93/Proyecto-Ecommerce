@@ -16,9 +16,10 @@ import { addToCart, removeFromCart } from "../../acciones/carritoAcciones";
 
 function CartScreen({ params, location, history }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { id } = useParams();
   const productoId = id;
-  const cantidad = navigate.search ? Number(location.search.split("=")[1]) : 1;
+  const cantidad = location.search ? Number(location.search.split("=")[1]) : 1;
   const dispatch = useDispatch();
 
   console.log(productoId, cantidad);
