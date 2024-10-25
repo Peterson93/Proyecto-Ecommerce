@@ -181,8 +181,8 @@ SIMPLE_JWT = {
 
 #EMAIL_HOST='smtpout.secureserver.net'
 EMAIL_HOST='mail.gmx.com'
-EMAIL_HOST_USER='peterson.delarosa93@gmx.es'
-EMAIL_HOST_PASSWORD='930510.peter'
+EMAIL_HOST_USER='pruebasdev@gmx.es'
+EMAIL_HOST_PASSWORD='*12345678p'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
