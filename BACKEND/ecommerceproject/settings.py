@@ -15,6 +15,7 @@ from datetime import timedelta
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,9 +35,9 @@ django.utils.encoding.force_text = force_str
 SECRET_KEY = 'django-insecure-!p7pbdyk^q)c991by4mwezl9%6ke#7dubd4qt84q(l$7$v=&na'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -180,9 +181,9 @@ SIMPLE_JWT = {
 # email credential for sending email
 
 #EMAIL_HOST='smtpout.secureserver.net'
-EMAIL_HOST='mail.gmx.com'
-EMAIL_HOST_USER='pruebasdev@gmx.es'
-EMAIL_HOST_PASSWORD='*12345678p'
+SECRET_KEY = config('SECRET_KEY')
+EMAIL_HOST_USER= config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD= config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'

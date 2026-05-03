@@ -1,5 +1,8 @@
 # Python
 venv/
+BACKEND/venv/
+.venv/
+env/
 __pycache__/
 *.pyc
 db.sqlite3
