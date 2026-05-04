@@ -16,6 +16,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -65,6 +66,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ...
 ]
 
 REST_FRAMEWORK = {
@@ -194,13 +197,15 @@ EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 
 STATIC_URL = 'static/'
 
-MEDIA_URL ='/imagenes/'
-
-STATICFILES_DIRS=[
+STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-MEDIA_ROOT='static/imagenes'
+STATIC_ROOT = BASE_DIR / 'staticfiles'   
+
+MEDIA_URL = '/imagenes/'
+
+MEDIA_ROOT = BASE_DIR / 'static' / 'imagenes'  
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
